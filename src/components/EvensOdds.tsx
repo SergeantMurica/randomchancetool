@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { playSound } from "./SoundManager";
+import { playSound } from "../utils/SoundManager";
 import clickSound from "../assets/click.mp3";
 
 const EvensOdds: React.FC = () => {
@@ -11,17 +11,21 @@ const EvensOdds: React.FC = () => {
     };
 
     return (
-        <div className="p-6 bg-white text-black rounded-lg shadow-lg flex flex-col items-center">
+        <div className="p-6 bg-white/10 backdrop-blur-md rounded-xl shadow-lg flex flex-col items-center">
             <h2 className="text-xl font-semibold">Evens or Odds</h2>
             <button
                 onClick={getEvensOrOdds}
-                className="mt-4 px-4 py-2 bg-purple-500 hover:bg-purple-700 transition rounded"
+                className={`mt-5 px-3 py-1 rounded-full ${
+                    result
+                        ? "bg-green-500 text-white"
+                        : "bg-gray-200 text-gray-700"
+                }`}
             >
                 Pick
             </button>
-            {result && <p className="mt-4 text-lg">{result}</p>}
+            {result && <p className="text-2xl font-bold mt-20 mb-4 text-white">{result}</p>}
         </div>
     );
 };
 
-export default EvensOdds;
+export {EvensOdds};
